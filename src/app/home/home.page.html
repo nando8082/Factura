@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light" [fullscreen]="true">
+  <ion-card>
+    <img alt="Silhouette of mountains" src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Logo_Universidad_Polit%C3%A9cnica_Salesiana_del_Ecuador.png" />
+    <ion-card-header>
+      <ion-card-title>Facturero UPS</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <p>Ya eres usuario</p>
+      <ion-button expand="full" color="secondary" shape="round" [routerLink]="['/login']">Ingresar</ion-button>
+      <br>
+      <p>Aun no eres usuario</p>
+      <ion-button expand="full" color="secondary" shape="round" [routerLink]="['/register']">Registrarse</ion-button>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

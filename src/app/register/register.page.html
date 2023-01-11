@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button class="btn-titulo" color="secondary" [routerLink]="['/home']"><ion-icon name="arrow-back-outline"></ion-icon></ion-button>
+    <ion-title>Registro de Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img alt="Registro" src="https://icon-library.com/images/icon-person/icon-person-14.jpg" />
+    <form [formGroup]="userRegisterForm" (ngSubmit)="register()">
+      <ion-item>
+        <ion-label>
+          <ion-icon name="person-outline"></ion-icon>
+        </ion-label>
+        <ion-input formControlName="username" id="username" type="text" placeholder="Usuario *" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <ion-icon name="lock-open-outline"></ion-icon>
+        </ion-label>
+        <ion-input formControlName="password" id="password" type="password" placeholder="Contraseña *"
+          required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <ion-icon name="lock-open-outline"></ion-icon>
+        </ion-label>
+        <ion-input formControlName="confirmPassword" id="confirmPassword" type="password"
+          placeholder="Confirmar Contraseña *" required></ion-input>
+      </ion-item>
+
+      <ion-button type="submit" shape="round" color="secondary" expand="block">Registrarse</ion-button>
+
+    </form>
+  </ion-card>
+</ion-content>

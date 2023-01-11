@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button class="btn-titulo" color="secondary" [routerLink]="['/principal']"><ion-icon name="home-outline"></ion-icon></ion-button>
+    <ion-title>Lista de Clientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card color="medium" class="card-item" *ngFor="let clients of clientesT">
+    <img class="imagen" src="https://cdn-icons-png.flaticon.com/128/9159/9159758.png" />
+    <ion-card-header>
+      <ion-card-title class="ion-text-center"> {{clients.nombre}}</ion-card-title>
+      <ion-card-subtitle>{{clients.tipoIdentificacion}}: {{clients.identificacionNumero}}</ion-card-subtitle>
+      <ion-card-subtitle>Teléfono: {{clients.telefono}} </ion-card-subtitle>
+      <ion-card-subtitle>E-mail: {{clients.correoElectronico}} </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-button shape="round" color="secondary" expand="full " (click)="actualizar(clients)">
+        <ion-icon name="create-sharp"></ion-icon> &nbsp; Actualizar</ion-button>
+      <ion-button shape="round" color="danger" expand="full" (click)="presentActionSheet(clients)">
+        <ion-icon name="trash-outline"></ion-icon> &nbsp; Eliminar</ion-button>
+    </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="3">
+        <ion-button color="success" [routerLink]="['/principal']" fill="outline">
+          <ion-icon slot="icon-only" name="home"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" [routerLink]="['/registerClient']">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+</ion-content>

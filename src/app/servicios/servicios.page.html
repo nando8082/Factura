@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Servicios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img alt="Silhouette of mountains"
+      src="https://storage.googleapis.com/production-ipage-v1-0-5/815/278815/ZBLYNqUX/5d1d9dc0357141bc80221fcbe83c450c" />
+    <ion-card-header>
+      <ion-card-title>Servicios</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p></p>
+      <ion-button expand="full" color="secondary" shape="round" [routerLink]="['/registerservice']">Registrar
+        Servicio</ion-button>
+      <br>
+      <p></p>
+      <ion-button expand="full" color="secondary" shape="round" [routerLink]="['/listServices']">Listar
+        Servicios</ion-button>
+
+    </ion-card-content>
+  </ion-card>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="3">
+        <ion-button color="success" [routerLink]="['/principal']" fill="outline">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

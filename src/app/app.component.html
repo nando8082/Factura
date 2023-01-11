@@ -1,0 +1,38 @@
+<ion-app>
+  <ion-menu menuId="main-menu" contentId="main">
+    <ion-content class="ion-padding">
+      <div class="menu-header-bg"></div>
+      <div class="header-content">
+        <img src="https://cdn-icons-png.flaticon.com/128/6996/6996778.png" alt="">
+        <ion-label>
+          <h2>{{userRev()}}</h2>
+          <p class="horaFecha">{{fecha| date:'short'}}</p>
+        </ion-label>
+
+      </div>
+
+      <ion-list class="menu-items" lines="none">
+        <ion-menu-toggle>
+        
+          <ion-item>
+            <ion-icon name="people-circle" routerLink="listarClient"></ion-icon>
+            <p>&nbsp; Clientes</p>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="browsers-outline" routerLink="listServices"></ion-icon> 
+            <p>&nbsp; Servicios</p>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="briefcase-outline" routerLink="facturas"></ion-icon> 
+            <p>&nbsp; Facturación</p>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="log-out-outline" (click)="cerrarSesion()"></ion-icon> 
+            <p>&nbsp; Cerrar Sesión</p>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-app>

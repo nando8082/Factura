@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrar Clientes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img alt="Cliente" src="https://cdn-icons-png.flaticon.com/128/9159/9159758.png" />
+    <ion-card-header>
+      <ion-card-title>Formulario de Registro</ion-card-title>
+    </ion-card-header>    
+    <form [formGroup]="clientRegisterForm" (ngSubmit)="register()">
+      <ion-list lines="full">
+        <ion-item>
+          <ion-select formControlName="tipoIdentificacion" id="tipoIdentificacion" placeholder="Tipo de Documentación">
+            <ion-select-option value="RUC">RUC</ion-select-option>
+            <ion-select-option value="CEDULA">CEDULA</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+  
+      <ion-item>
+        <ion-label>
+          <ion-icon name="id-card-outline"></ion-icon>
+        </ion-label>
+        <ion-input formControlName="identificacionNumero" id="identificacionNumero" type="text" placeholder="Cédula/RUC *" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <ion-icon name="person-outline"></ion-icon>
+        </ion-label>
+        <ion-input formControlName="nombre" id="nombre" type="text" placeholder="Nombre *"
+          required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <ion-icon name="location-outline"></ion-icon>
+        </ion-label>
+        <ion-input formControlName="direccion" id="direccion" type="text"
+          placeholder="Dirección *" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <ion-icon name="call-outline"></ion-icon>
+        </ion-label>
+        <ion-input formControlName="telefono" id="telefono" type="text"
+          placeholder="Teléfono *" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <ion-icon name="mail-outline"></ion-icon>
+        </ion-label>
+        <ion-input formControlName="correoElectronico" id="correoElectronico" type="mail"
+          placeholder="E-mail *" required></ion-input>
+      </ion-item>
+
+      <ion-button type="submit" shape="round" color="secondary" expand="block">Registrar</ion-button>
+      <ion-button type="submit" shape="round" color="secondary" [routerLink]="['/listarClient']" expand="block">Cancelar</ion-button>
+
+    </form>
+  </ion-card>
+</ion-content>

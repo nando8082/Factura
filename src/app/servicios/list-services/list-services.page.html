@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button class="btn-titulo" color="secondary" [routerLink]="['/principal']"><ion-icon name="home-outline"></ion-icon></ion-button>
+    <ion-title>Lista de Servicios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card color="medium" class="items" *ngFor="let servicios of servicioT">
+    <ion-card-header>
+
+      <img class="imagen" alt="Product" src="https://cdn-icons-png.flaticon.com/128/8947/8947916.png" />
+
+      <ion-card-content>
+        <h1 class="ion-text-center">{{servicios.descripcion}}</h1>
+      </ion-card-content>
+      <ion-card-subtitle class="ion-text-left">Precio Unitario: $ {{servicios.precioUnitario}} </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-button shape="round" expand="full" color="secondary" (click)="actualizar(servicios)">
+        <ion-icon name="create-sharp"></ion-icon>
+        <p> &nbsp; Actualizar</p>
+      </ion-button>
+      <ion-button shape="round" color="danger" expand="full" (click)="presentActionSheet(servicios)">
+        <ion-icon name="trash-sharp"></ion-icon>
+        <p> &nbsp; Eliminar</p>
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+  <!--Boton para Home-->
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="3">
+        <ion-button color="success" [routerLink]="['/principal']" fill="outline">
+          <ion-icon slot="icon-only" name="home"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!--Boton para Agregar Servicio-->
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end" [routerLink]="['/registerservice']">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

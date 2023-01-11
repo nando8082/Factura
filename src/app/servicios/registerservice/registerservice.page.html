@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrar Servicios</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img alt="Servicios" src="https://cdn-icons-png.flaticon.com/128/8947/8947916.png" />
+    <ion-card-header>
+      <ion-card-title>Crear Servicio</ion-card-title>
+    </ion-card-header>
+  
+    <form [formGroup]="serviceRegisterForm" (ngSubmit)="registerService()">
+      <ion-item>
+        <ion-label>
+          <ion-icon name="text-outline"></ion-icon>
+        </ion-label>
+        <ion-input formControlName="descripcion" id="descripcion" type="text" placeholder="Descripción *" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <ion-icon name="cash-outline"></ion-icon>
+        </ion-label>
+        <ion-input formControlName="precioUnitario" id="precioUnitario" type="text" placeholder="Precio Unitario *" required></ion-input>
+      </ion-item>
+
+    <ion-item lines="full" aria-readonly="true" class="ion-hide">
+      <ion-label position="floating" aria-disabled="true">Id:</ion-label>
+      <ion-input formControlName="usuarioId" id="usuarioId"  type="text" readOnly></ion-input>
+    </ion-item>
+
+    <ion-button type="submit" shape="round" color="secondary" expand="block">Registrar</ion-button>
+    <ion-button type="submit" shape="round" color="secondary" [routerLink]="['/listServices']" expand="block">Cancelar</ion-button>
+    </form>
+  </ion-card>
+
+  <!-- <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="3">
+        <ion-button color="success" [routerLink]="['/listServices']" fill="outline">
+        <ion-icon slot="icon-only" name="home"></ion-icon>
+      </ion-button>
+    </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button class="btn-titulo" color="secondary" [routerLink]="['/home']"><ion-icon
+        name="arrow-back-outline"></ion-icon></ion-button>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <ion-card>
+      <img class="imagen" alt="Silhouette of mountains" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQca4M5Tx_p9TxLdn-l0JppbwdiEbGdvJvIIYp3NYdvZJps_yu5pwnMY3VvUSqVgLcfYSk&usqp=CAU" />
+      <ion-item>
+        <ion-label>
+          <ion-icon name="person-outline"></ion-icon>
+        </ion-label>
+        <ion-input formControlName="username" id="username" type="text" placeholder="Username *" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>
+          <ion-icon name="lock-open-outline"></ion-icon>
+        </ion-label>
+        <ion-input formControlName="password" id="password" type="password" placeholder="Password *"
+          required></ion-input>
+      </ion-item>
+
+      <ion-button shape="round" color="secondary" type="submit" expand="block">Login</ion-button>
+    </ion-card>
+
+
+  </form>
+</ion-content>
