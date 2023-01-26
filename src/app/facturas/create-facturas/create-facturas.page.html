@@ -1,129 +1,107 @@
 <ion-header>
   <ion-toolbar>
-    <ion-button (click)="restoreLocalStorage()" class="btn-titulo" color="secondary"
-      [routerLink]="['/principal']"><ion-icon name="home-outline"></ion-icon></ion-button>
+    <ion-button slot="start" class="btn-titulo" color="secondary" [routerLink]="['/listfacturas']"><ion-icon
+        name="arrow-back-outline"></ion-icon></ion-button>
     <ion-title>Crear Factura</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-card color="medium">
-    <ion-card class="crearFactura" color="light">
+  <h1>Cliente</h1>
+  <ion-card class="crearFactura">
 
-      <ion-card-title class="subtitulo">Datos del Cliente</ion-card-title>
-      <br>
+    
+
+    <ion-header>
       <ion-item>
-        <ion-input #identificador id="identificacionNumero" type="text" class="input1" placeholder="Cédula/RUC" required
-          class="ion-text-center"></ion-input>
-        <ion-button class="buscar" color="secondary" shape="round" slot="end"
-          (click)="buscarClienteIdentificacion(''+identificador.value)">
+        <ion-input #identificador id="identificacionNumero" type="text" class="input1"
+          placeholder="Cédula/RUC" required class="ion-text-center"></ion-input>
+
+
+        <ion-button color="secondary" slot="end" (click)="buscarClienteIdentificacion(''+identificador.value)">
           <ion-icon name="search-outline"></ion-icon>
         </ion-button>
       </ion-item>
+    </ion-header>
+  </ion-card>
+
+
+
+  <h1>Datos de la factura</h1>
+
+  <ion-card-content class="hola">
+    <ion-card>
       <ion-item>
-        <ion-icon class="icono" name="person-outline">&nbsp;</ion-icon>
-        <ion-input [(ngModel)]="cliente.nombre" id="nombre" type="text" placeholder="  Nombre"
-          value="{{cliente.nombre}}" readOnly>&nbsp;&nbsp;</ion-input>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input [(ngModel)]="cliente.nombre" id="nombre" type="text" class="ion-text-center"
+        value="{{cliente.nombre}}" readOnly></ion-input>
       </ion-item>
+
       <ion-item>
-        <ion-icon class="icono" name="mail-outline">&nbsp;</ion-icon>
-        <ion-input [(ngModel)]="cliente.correoElectronico" id="email" type="text" placeholder="  Email"
-          value="{{cliente.correoElectronico}}" readOnly>&nbsp;&nbsp;</ion-input>
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input [(ngModel)]="cliente.correoElectronico" id="email" type="text" class="ion-text-center"
+        value="{{cliente.correoElectronico}}" readOnly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Dirección</ion-label>
+        <ion-input [(ngModel)]="cliente.direccion" id="direccion" type="text" class="ion-text-center"
+        value="{{cliente.direccion}}" readOnly></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Teléfono</ion-label>
+        <ion-input [(ngModel)]="cliente.telefono" id="telefono" type="text" class="ion-text-center"
+        value="{{cliente.telefono}}" readOnly></ion-input>
       </ion-item>
     </ion-card>
+    <form [formGroup]="facturaRegisterForm" (ngSubmit)="cargarfactura()">
+      <ion-input class="ion-hide" formControlName="clienteId" [(ngModel)]="cliente.id" id="clienteId" type="text"
+        value="{{cliente.id}}" readOnly></ion-input>
+      <ion-item>
+        <ion-button shape="round" type="submit" color="secondary">Facturar</ion-button>
+      </ion-item>
 
-    <!-- Agregar detalles -->
+    </form>
 
-    <ion-card>
+    <ion-card color="light">
+      <ion-card-subtitle class="ion-text-center">Productos Facturar</ion-card-subtitle>
+      <ion-card *ngFor="let detalles of detalles1" style="background-color: white;">
 
-      <ion-accordion-group>
-        <ion-accordion value="first">
-          <ion-item slot="header" color="light">
-            <ion-icon name="cart-outline"></ion-icon>
-            <ion-label class="icono">&nbsp;&nbsp;&nbsp;&nbsp;Artículos</ion-label>
-          </ion-item>
-          <div class="ion-padding" slot="content">
-            <form [formGroup]="user">
-              <ion-select #seer placeholder="Seleccione Un servicio" class="input1" formControlName="producto"
-                id="producto" (ionChange)="handleChange($event)" required>
-                <ion-select-option *ngFor="let servicio of servicioTDetail"
-                  [value]="servicio">{{servicio.descripcion}}</ion-select-option>
-              </ion-select>
 
-              <ion-label aria-expanded="true" position="floating" class="ion-align-items-center">Precio
-                Unitario</ion-label>
-              <ion-input #precioUnitario formControlName="precioUnitario" id="precioUnitario" type="number"
-                class="input1" required value="{{serviciof.precioUnitario}}"> </ion-input>
-              <ion-label position="floating" class="ion-align-items-center">Cantidad</ion-label>
-              <ion-input #cantidad formControlName="cantidad1" id="cantidad1" type="number" class="input1"
-                placeholder="Ingrese la cantidad" required></ion-input>
-
-              <ion-button class="button" shape="round"
-                (click)="agregarDetalles(+precioUnitario.value!,serviciof.id, +cantidad.value!, serviciof.descripcion)"
-                color="secondary">Agregar</ion-button>
-
-            </form>
-          </div>
-        </ion-accordion>
-      </ion-accordion-group>
-    </ion-card>
-
-    <!-- Listar Productos -->
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title class="productosFactura">Productos a facturar</ion-card-title>
-      </ion-card-header>
-      <ion-card *ngFor="let detalles of detDetail">
-
-        <ion-item lines="lines" color="light">
+        <ion-item lines="lines">
           <ion-thumbnail slot="start">
 
             <img src="https://cdn-icons-png.flaticon.com/128/8947/8947916.png" />
           </ion-thumbnail>
-          <ion-list style="background-color:var(--ion-color-light);">
+          <ion-list>
 
             <ion-label color="dark">Producto: {{detalles.descripcion}}</ion-label>
-
             <ion-label color="dark">Pecio U: {{detalles.precioUnitario}} $</ion-label>
-
             <ion-label color="dark">Cantidad: {{detalles.cantidad}}</ion-label>
-            <ion-label color="dark">Total: {{detalles.total}} $</ion-label>
+            <!-- <ion-label color="dark">Total: {{detalles.total}} $</ion-label> -->
           </ion-list>
         </ion-item>
 
+
+
       </ion-card>
-      <ion-card-content>
+      <ion-item lines="lines">
+
+        <ion-list>
+
+          <ion-label color="dark">Subtotal: {{subtotal}} $</ion-label>
 
 
+          <ion-label color="dark">Iva: {{impuesto}} $</ion-label>
 
-        <ion-card color="light">
-          <!-- <ion-card-subtitle class="ion-text-center">Factura</ion-card-subtitle> -->
 
-          <ion-item lines="lines" color="light">
-            <ion-title class="ion-text-center">Valores</ion-title>
-
-            <ion-list style="background-color:var(--ion-color-light);">
-
-              <ion-label color="dark">Subtotal: {{subtotalDetail}} $</ion-label>
-
-              <ion-label color="dark">Iva: {{impuestoDetail}} $</ion-label>
-
-              <ion-label color="dark">Total: {{totalFDetail}} $</ion-label>
-            </ion-list>
-          </ion-item>
-        </ion-card>
-        <ion-card>
-        </ion-card>
-      </ion-card-content>
+          <ion-label color="dark">Total: {{totalF}} $</ion-label>
+        </ion-list>
+      </ion-item>
     </ion-card>
-  </ion-card>
+    <ion-card>
 
-  <!-- Boton Generar -->
-  <form [formGroup]="facturaRegisterForm" (ngSubmit)="cargarfactura()">
-    <ion-input class="input1" formControlName="clienteId" [(ngModel)]="cliente.id" id="clienteId" type="text"
-      class="ion-text-center, ion-hide" value="{{cliente.id}}" readOnly color="madium"></ion-input>
-    <ion-item color="madium">
-      <ion-button type="submit" color="secondary" shape="round">Generar</ion-button>
-    </ion-item>
-  </form>
+    </ion-card>
+  </ion-card-content>
 </ion-content>

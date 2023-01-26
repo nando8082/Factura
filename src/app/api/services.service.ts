@@ -52,8 +52,9 @@ export class ServicesService {
         this._refresh$.next();
       })
     );
-
   }
+
+  
   deleteServicio(id: number){
     let finalUrl = this.endPoint + 'delete';
     return this.httpClient.get(finalUrl+"/"+id)

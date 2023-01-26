@@ -4,7 +4,7 @@
 
 export const environment = {
   production: true,
-  backEndServer: 'http://localhost:8080/'
+  backEndServer: 'https://cloudcomputing.ups.edu.ec/Facturero/'
 };
 
 /*

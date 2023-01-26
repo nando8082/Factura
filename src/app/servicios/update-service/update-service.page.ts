@@ -12,13 +12,14 @@ import { Servicio } from 'src/app/servicios/entidades';
 })
 export class UpdateServicePage implements OnInit {
 
+  producto: any = []
   serviceUpdateForm: FormGroup = this.fb.group({
-    'id': [''],
+    'id': [localStorage.getItem("idServicio")],
     'descripcion': ['', [Validators.required]],
     'precioUnitario': ['', [Validators.required]]
 
   });
-  servicio: Servicio = new Servicio();
+  servicio: Servicio = new Servicio()
 
   constructor(
     private fb: FormBuilder,
@@ -32,10 +33,18 @@ export class UpdateServicePage implements OnInit {
   }
 
   cargarServicio() {
-    let id = localStorage.getItem("idServicio");
-    this.servicioService.getServicioId(+id!).subscribe(data => {
-      console.log(data.descripcion);
-      this.servicio = data;
+    let idS = localStorage.getItem("idServicio")
+    let idU = localStorage.getItem("id-username")
+    let producto
+    this.servicioService.listarAllServicio(+idU!).subscribe(data => {
+      console.log(data.find(x => x.id === (+idS!)))
+      localStorage.setItem("producto",JSON.stringify(data.find(x => x.id === (+idS!))))
+      /* this.servicio = data.find(x => x.id === (+idS!))  */
+      producto = JSON.parse(localStorage.getItem("producto")!)
+      this.servicio.id = producto.id
+      this.servicio.descripcion = producto.descripcion
+      this.servicio.precioUnitario = producto.precioUnitario
+      this.servicio.usuarioId= producto.usuarioId
     })
 
   }
@@ -51,7 +60,7 @@ export class UpdateServicePage implements OnInit {
             //console.log('hola', data)
             this.mostrarMensaje('El Servicio ha sido actualizado Correctamente');
             this.router.navigate(['../listServices']);
-
+            localStorage.removeItem("idServicio")
 
           },
           (error) => {

@@ -19,6 +19,14 @@ const routes: Routes = [
   {
     path: 'create-details',
     loadChildren: () => import('./create-details/create-details.module').then( m => m.CreateDetailsPageModule)
+  },
+  {
+    path: 'anularfacturas',
+    loadChildren: () => import('./anularfacturas/anularfacturas.module').then( m => m.AnularfacturasPageModule)
+  },
+  {
+    path: 'detallefactura',
+    loadChildren: () => import('./detallefactura/detallefactura.module').then( m => m.DetallefacturaPageModule)
   }
 ];
 

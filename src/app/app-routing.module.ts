@@ -67,6 +67,18 @@ const routes: Routes = [
     path: 'listfacturas',
     loadChildren: () => import('./facturas/list-facturas/list-facturas.module').then( m => m.ListFacturasPageModule)
   },
+  {
+    path: 'detailfacturas',
+    loadChildren: () => import('./facturas/create-details/create-details.module').then( m => m.CreateDetailsPageModule)
+  },
+  {
+    path: 'anularfacturas',
+    loadChildren: () => import('./facturas/anularfacturas/anularfacturas.module').then( m => m.AnularfacturasPageModule)
+  },
+  {
+    path: 'detallefactura',
+    loadChildren: () => import('./facturas/detallefactura/detallefactura.module').then( m => m.DetallefacturaPageModule)
+  },
 ];
 
 @NgModule({

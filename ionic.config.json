@@ -1,0 +1,7 @@
+{
+  "name": "facturero-ups",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
